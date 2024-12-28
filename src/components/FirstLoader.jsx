@@ -7,15 +7,16 @@ const styles = {
       justifyContent: 'center',
       alignItems: 'center',
       height: '100vh',
-      backgroundColor: '#000', // Optional, set background color while loading
+      overflow: 'hidden', // Ensure no overflow from the video
    },
    video: {
-      width: '100%',
-      height: 'auto',
-      maxWidth: '100vw',
-      maxHeight: '100vh',
+      width: 'auto', // Adjust width dynamically
+      height: '100vh', // Force video to take full viewport height
+      maxWidth: 'none', // Prevent limiting width to viewport
+      maxHeight: 'none', // Prevent limiting height to viewport
    },
 };
+
 
 const FirstLoader = () => {
    return (
