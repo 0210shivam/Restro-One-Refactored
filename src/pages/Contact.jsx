@@ -22,7 +22,7 @@ const Contact = () => {
    const [drawerOpen, setDrawerOpen] = React.useState(true);
 
    // Ensure pages is a safe array
-   const pages = Array.isArray(businessData?.pages) ? businessData.pages.filter((l) => !l.card_id).slice(0, 5) : [];
+   const pages = Array.isArray(businessData?.pages) ? businessData.pages.filter((l) => !l.card_id) : [];
    console.log("Pages", pages);
 
    const banners = businessData.banners;
@@ -133,7 +133,7 @@ const Contact = () => {
             <footer className="footer-section">
                <Typography variant="caption">
                   Powered by: <a href="https://magicqr.in" target="_blank" rel="noopener noreferrer">
-                     <img style={{ height: '50px' }} src={magicQrImg} alt="magic-r" />
+                     <img style={{ height: '50px', marginLeft: 8 }} src={magicQrImg} alt="magic-r" />
                   </a>
                </Typography>
                <Stack component="div" onClick={() => window.open("https://shop.magicqr.in", "_blank")} mt={2} sx={{ p: 1, cursor: 'pointer', border: !theme && "1px solid gray", backgroundColor: theme && theme.primary_theme_color, borderRadius: 2 }} direction="row" alignItems="center" justifyContent="center">

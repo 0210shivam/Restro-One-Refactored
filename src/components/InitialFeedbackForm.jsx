@@ -202,7 +202,7 @@ const InitialFeedbackForm = (props) => {
                <Stack width={1} direction="row" justifyContent="center" alignItems="center">
                   <Typography variant="caption">
                      Powered by: <a href="https://magicqr.in" target="_blank" rel="noopener noreferrer">
-                        <img style={{ height: '50px' }} src={magicQrImg} alt="magic-r" />
+                        <img style={{ height: '50px', marginLeft: 8 }} src={magicQrImg} alt="magic-r" />
                      </a>
                   </Typography>
                </Stack>
