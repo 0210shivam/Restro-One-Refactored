@@ -90,7 +90,14 @@ const Contact = () => {
             {/* Links Section */}
             <Stack className="links-section">
                <Link
-                  onClick={() => vcfDownload({ phoneNumber: business?.phone, name: business?.owner })}
+                  onClick={() => vcfDownload({
+                     phoneNumber: business?.phone,
+                     name: business?.name,
+                     email: business?.email,
+                     address: business?.addrss,
+                     city: business?.city,
+                     pincode: business?.pincode
+                  })}
                   className="link-item"
                   target='_blank'
                   style={{

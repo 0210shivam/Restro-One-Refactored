@@ -4,7 +4,7 @@ import FeedBackAPI from '../apis/FeedbackAPI';
 import { useBusiness } from '../context/BusinessContextProvider';
 import InitialLoader from './InitialLoader';
 import FeedbackQuestions from './feedback-questions/FeedbackQuestions';
-import GoogleLogo from '../assets/googleLogo.png'
+import GoogleLogo from '../assets/glogo.webp';
 import magicQrImg from // Change the border color of the empty star
    '../../public/magicqrpng.png';
 
@@ -101,14 +101,14 @@ const InitialFeedbackForm = (props) => {
       <>
          <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <div>
-               <Typography className='text-center' variant="h5" sx={{ color: props.theme ? props.theme.primary_theme_color : 'black', fontFamily: 'Poppins' }}>
+               <Typography className='text-center' variant="h5" sx={{ color: 'black', fontFamily: 'Poppins' }}>
                   {pageName === "/" ? 'Review us on' : 'Review us on'}
                </Typography>
                <Stack direction="row" alignItems="center" justifyContent="center" width={1} mt={1}>
                   <img src={GoogleLogo} height={60} />
                </Stack>
-               <Typography className='text-center' variant="body2" sx={{ mb: 2, color: props.theme ? props.theme.primary_theme_color : 'black', fontFamily: 'Poppins' }}>
-                  {pageName === "/" ? 'We Value Your Feedback.' : 'We Value Your Feedback.'}
+               <Typography className='text-center' variant="body2" sx={{ mb: 2, color: 'black', fontFamily: 'Poppins' }}>
+                  {pageName === "/" ? 'We Value Your Feedback' : 'We Value Your Feedback'}
                </Typography>
                {/* <Typography className='text-center' variant="subtitle2" sx={{ mb: 2, color: props.theme ? props.theme.primary_text_color : 'black', fontFamily: 'Poppins' }}>
                   {
