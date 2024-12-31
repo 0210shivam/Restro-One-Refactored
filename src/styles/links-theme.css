@@ -1,0 +1,99 @@
+/* Container styles */
+.theme-container {
+   display: flex;
+   flex-direction: column;
+   font-family: "Poppins", sans-serif;
+   /* align-items: center; */
+   text-align: center;
+   padding: 20px;
+   max-width: 600px;
+   /* margin: auto; */
+   /* background-color: #fff; */
+   border-radius: 15px;
+   overflow: hidden;
+   /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+}
+
+.profile-image {
+   width: -webkit-fill-available;
+   height: 100px;
+   /* border-radius: 50%; */
+   object-fit: contain;
+   margin-bottom: 10px;
+   /* border: 3px solid #03a9f4; */
+}
+
+.profile-name {
+   font-weight: bold;
+   margin-bottom: 5px;
+}
+
+/* Contact Info Section */
+.contact-info-section {
+   margin: 5px 0;
+   /* margin-bottom: '10px'; */
+   /* font-family: "Poppins", sans-serif; */
+}
+
+.contact-item {
+   display: flex;
+   align-items: start;
+   text-align: start;
+   gap: 8px;
+   font-size: 14px;
+   color: #333;
+}
+
+.contact-item a {
+   text-decoration: none;
+   color: inherit;
+}
+
+.contact-item a:hover {
+   text-decoration: underline;
+}
+
+/* Banners section */
+.banners-section {
+   margin-bottom: 20px;
+}
+
+/* Links section */
+.links-section {
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+   width: 100%;
+}
+
+.link-item {
+   padding: 10px 20px;
+   border-radius: 25px;
+   text-decoration: none;
+   font-weight: bold;
+   font-size: 16px;
+   text-align: center;
+   transition: transform 0.2s ease, box-shadow 0.2s ease;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.link-item:hover {
+   transform: scale(1.05);
+   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer section */
+.footer-section {
+   margin-top: 30px;
+   font-size: 12px;
+   color: #999;
+}
+
+.footer-section a {
+   color: #03a9f4;
+   text-decoration: none;
+}
+
+.footer-section a:hover {
+   text-decoration: underline;
+}
