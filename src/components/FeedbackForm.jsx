@@ -4,6 +4,7 @@ import FeedBackAPI from '../apis/FeedbackAPI';
 import { useBusiness } from '../context/BusinessContextProvider';
 import InitialLoader from './InitialLoader';
 import FeedbackQuestions from './feedback-questions/FeedbackQuestions';
+import { decrypt } from '../utils/encryptId';
 
 const CustomRating = styled(Rating)({
    '& .MuiRating-iconEmpty': {
@@ -17,6 +18,7 @@ const FeedbackFrom = (props) => {
    const [pageName, setPageName] = useState('');
    const [ratings, setRatings] = useState(0);
    const [reviewURL, setReviewURL] = useState(props.reviewURL);
+   const [reviewName, setReviewName] = useState("Google");
    const [name, setName] = useState('');
    const [email, setEmail] = useState('');
    const [showDes, setShowDes] = useState(true);
@@ -45,18 +47,35 @@ const FeedbackFrom = (props) => {
 
    useEffect(() => {
       const fetchPages = () => {
+         const id = decrypt(props?.id);
          const links = props.pages;
-         const r_link =
-            links.find((i) => i.link?.includes("g.page")) ? links?.find((i) => i.link?.includes("g.page"))?.link :
-               links.find((i) => i.link?.includes("placeid")) ? links?.find((i) => i.link?.includes("placeid"))?.link : "";
+         if (pageName === "/") {
+            const r_link =
+               links.find((i) => i.link?.includes("g.page")) ? links?.find((i) => i.link?.includes("g.page"))?.link :
+                  links.find((i) => i.link?.includes("placeid")) ? links?.find((i) => i.link?.includes("placeid"))?.link : "";
 
-         setReviewURL(r_link);
+            setReviewURL(r_link);
+            setReviewName("Google");
+         } else {
+            const r_link = links.find((i) => +i?.id === +id);
+            const link = r_link ? r_link.link : '';
+            const link_name = r_link ? r_link.page_title : '';
+            setReviewName(link_name);
+
+            let final_link;
+            if (!link.startsWith("http://") && !link.startsWith("https://")) {
+               final_link = `https://${link}`; // Add the protocol if it's missing
+               setReviewURL(final_link);
+            } else {
+               setReviewURL(link);
+            }
+         }
       };
 
       if (props.pages) {
          fetchPages();
       }
-   }, [props.pages]);
+   }, [props.pages, pageName]);
 
    useEffect(() => {
       function redirectToNewTab() {
@@ -99,7 +118,7 @@ const FeedbackFrom = (props) => {
          <Container sx={{ display: 'flex', justifyContent: 'center', mt: 5, alignItems: 'center' }}>
             <div>
                <Typography className='text-center' variant="h5" sx={{ mb: 2, color: props.theme ? props.theme.primary_theme_color : 'black', fontFamily: 'Poppins' }}>
-                  {pageName === "/" ? 'Review on Google' : 'Review on Google'}
+                  Review on {reviewName}
                </Typography>
                {/* <Typography className='text-center' variant="subtitle2" sx={{ mb: 2, color: props.theme ? props.theme.primary_text_color : 'black', fontFamily: 'Poppins' }}>
                   {
@@ -107,7 +126,7 @@ const FeedbackFrom = (props) => {
                   }
                </Typography> */}
                {
-                  pageName === "/" ?
+                  (pageName === "/" || pageName === "/feedback") ?
                      <Stack direction="row" spacing={2} mb={2} justifyContent="center">
                         <Stack direction="row" spacing={1} alignItems="center">
                            <Typography sx={{ fontFamily: 'Poppins' }} variant='body1'>Ratings
@@ -123,7 +142,7 @@ const FeedbackFrom = (props) => {
                }
 
                {
-                  pageName === "/" &&
+                  (pageName === "/" || pageName === "/feedback") &&
                      (0 < +ratings && +ratings <= 3) || (+ratings >= 4 && (reviewURL === undefined || reviewURL === null || reviewURL === "")) ?
                      <Card sx={{
                         minWidth: {
@@ -134,13 +153,11 @@ const FeedbackFrom = (props) => {
                      }}>
                         <Stack spacing={2}>
                            <TextField
-                              required={pageName === "/contact"}
                               value={name}
                               onChange={(e) => setName(e.target.value)}
                               sx={{ borderRadius: '6px', '& .MuiFormLabel-asterisk': { color: 'red' }, '& .MuiOutlinedInput-root': { borderRadius: '6px' }, '& .MuiInputLabel-root': { color: 'grey', fontFamily: 'Poppins', zIndex: 0 } }}
                               id="outlined-basic" label="Name" variant="outlined" size='small' />
                            <TextField
-                              required={pageName === "/contact"}
                               value={phone}
                               onChange={(e) => setPhone(e.target.value)}
                               sx={{
@@ -158,20 +175,19 @@ const FeedbackFrom = (props) => {
                               showDes ?
                                  <TextField
                                     fullWidth
-                                    required={pageName === "/contact"}
                                     value={description}
                                     onChange={(e) => setDescription(e.target.value)}
                                     sx={{ mt: 2, borderRadius: '6px', '& .MuiFormLabel-asterisk': { color: 'red' }, '& .MuiOutlinedInput-root': { borderRadius: '6px' }, '& .MuiInputLabel-root': { color: 'grey', fontFamily: 'Poppins', zIndex: 0 } }}
                                     id="outlined-basic" multiline rows={5} label={pageName === "/" ? "Messsage" : "Message"} variant="outlined" size='small'
                                  /> : null
                            }
-                           {/* <FeedbackQuestions
+                           <FeedbackQuestions
                               onChangeSetShow={setShowDes}
                               questions={questions}
                               answers={answers}
                               onChangeQuestions={setQuestions}
                               onChangeAnswers={setAnswers}
-                           /> */}
+                           />
                         </Stack>
                         {
                            !isLoading ? (

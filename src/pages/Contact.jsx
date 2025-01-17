@@ -13,6 +13,7 @@ import SocialLinks from '../global/utils/LinkExport';
 import FeedbackFrom from '../components/FeedbackForm';
 import InitialFeedbackForm from '../components/InitialFeedbackForm';
 import vcfDownload from '../utils/vcfDownload';
+import { encrypt } from '../utils/encryptId';
 
 const Contact = () => {
    const { businessData } = useBusiness();
@@ -124,7 +125,26 @@ const Contact = () => {
                      >
                         {link.page_title}
                      </Link>
-                  ))}
+                  ))
+               }
+               {pages
+                  .filter(link => link.status === "1" && link.type === "5" && !link.card_id && !SocialLinks.find((l) => l.page_title === link.page_title)) // Filter links with status "1"
+                  .sort((a, b) => a.seq_no - b.seq_no) // Sort pageList based on seq_no
+                  .map((link) => (
+                     <Link
+                        to={link.type === "5" && `/feedback?id=${encrypt(link.id)}`}
+                        key={link.id}
+                        className="link-item"
+                        // target='_blank'
+                        style={{
+                           backgroundColor: theme ? theme.primary_theme_color : '#f0f0f0',
+                           color: theme ? theme.secondary_text_color : '#333',
+                        }}
+                     >
+                        {link.page_title}
+                     </Link>
+                  ))
+               }
             </Stack>
 
             <FeedbackFrom theme={theme} pages={pages} />

@@ -88,9 +88,6 @@ const InitialFeedbackForm = (props) => {
             setDescription('');
             handleChangeDialogData({ ...dialogData, open: true, msg: "Thank you for your feedback!" });
          }
-         // if (name && (email || phone)) {
-
-         // }
 
       } catch (error) {
          console.log(error);
@@ -102,13 +99,13 @@ const InitialFeedbackForm = (props) => {
          <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <div>
                <Typography className='text-center' variant="h5" sx={{ color: 'black', fontFamily: 'Poppins' }}>
-                  {pageName === "/" ? 'Review us on' : 'Review us on'}
+                  Review us on
                </Typography>
                <Stack direction="row" alignItems="center" justifyContent="center" width={1} mt={1}>
                   <img src={GoogleLogo} height={60} />
                </Stack>
                <Typography className='text-center' variant="body2" sx={{ mb: 2, color: 'black', fontFamily: 'Poppins' }}>
-                  {pageName === "/" ? 'We Value Your Feedback' : 'We Value Your Feedback'}
+                  We Value Your Feedback
                </Typography>
                {/* <Typography className='text-center' variant="subtitle2" sx={{ mb: 2, color: props.theme ? props.theme.primary_text_color : 'black', fontFamily: 'Poppins' }}>
                   {
@@ -116,7 +113,7 @@ const InitialFeedbackForm = (props) => {
                   }
                </Typography> */}
                {
-                  pageName === "/" ?
+                  (pageName === "/" || pageName === "/feedback") ?
                      <Stack direction="row" spacing={2} mb={2} justifyContent="center">
                         <Stack direction="row" spacing={1} alignItems="center">
                            <Typography sx={{ fontFamily: 'Poppins' }} variant='body1'>Ratings
@@ -133,7 +130,7 @@ const InitialFeedbackForm = (props) => {
 
                <Stack direction="row" justifyContent="center" alignItems="center">
                   {
-                     pageName === "/" &&
+                     (pageName === "/" || pageName === "/feedback") &&
                         (0 < +ratings && +ratings <= 3) || (+ratings >= 4 && (reviewURL === undefined || reviewURL === null || reviewURL === "")) ?
                         <Card sx={{
                            width: {
@@ -144,13 +141,11 @@ const InitialFeedbackForm = (props) => {
                         }}>
                            <Stack spacing={2}>
                               <TextField
-                                 required={pageName === "/contact"}
                                  value={name}
                                  onChange={(e) => setName(e.target.value)}
                                  sx={{ borderRadius: '6px', '& .MuiFormLabel-asterisk': { color: 'red' }, '& .MuiOutlinedInput-root': { borderRadius: '6px' }, '& .MuiInputLabel-root': { color: 'grey', fontFamily: 'Poppins', zIndex: 0 } }}
                                  id="outlined-basic" label="Name" variant="outlined" size='small' />
                               <TextField
-                                 required={pageName === "/contact"}
                                  value={phone}
                                  onChange={(e) => setPhone(e.target.value)}
                                  sx={{
@@ -168,7 +163,6 @@ const InitialFeedbackForm = (props) => {
                                  showDes ?
                                     <TextField
                                        fullWidth
-                                       required={pageName === "/contact"}
                                        value={description}
                                        onChange={(e) => setDescription(e.target.value)}
                                        sx={{ mt: 2, borderRadius: '6px', '& .MuiFormLabel-asterisk': { color: 'red' }, '& .MuiOutlinedInput-root': { borderRadius: '6px' }, '& .MuiInputLabel-root': { color: 'grey', fontFamily: 'Poppins', zIndex: 0 } }}
@@ -176,12 +170,12 @@ const InitialFeedbackForm = (props) => {
                                     /> : null
                               }
                               {/* <FeedbackQuestions
-                              onChangeSetShow={setShowDes}
-                              questions={questions}
-                              answers={answers}
-                              onChangeQuestions={setQuestions}
-                              onChangeAnswers={setAnswers}
-                           /> */}
+                                 onChangeSetShow={setShowDes}
+                                 questions={questions}
+                                 answers={answers}
+                                 onChangeQuestions={setQuestions}
+                                 onChangeAnswers={setAnswers}
+                              /> */}
                            </Stack>
                            {
                               !isLoading ? (
@@ -202,7 +196,7 @@ const InitialFeedbackForm = (props) => {
                <Stack width={1} direction="row" justifyContent="center" alignItems="center">
                   <Typography variant="caption">
                      Powered by: <a href="https://magicqr.in" target="_blank" rel="noopener noreferrer">
-                        <img style={{ height: '50px', marginLeft: 8 }} src={magicQrImg} alt="magic-r" />
+                        <img style={{ height: '50px' }} src={magicQrImg} alt="magic-r" />
                      </a>
                   </Typography>
                </Stack>
