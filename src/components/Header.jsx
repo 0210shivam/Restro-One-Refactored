@@ -44,10 +44,10 @@ const Header = (props) => {
                            }
                            {
                               props?.categories && props?.categories.length > 0 && props?.categories[0]?.product_details.length > 0 ?
-                                 <div onClick={() => router("/")} className="me-3" style={{ color: props.theme ? props.theme.primary_theme_color : 'white', fontWeight: 'bold', cursor: 'pointer' }}>E-Menu</div> : null
+                                 <div onClick={() => router("/e-menu")} className="me-3" style={{ color: props.theme ? props.theme.primary_theme_color : 'white', fontWeight: 'bold', cursor: 'pointer' }}>Digital Menu</div> : null
                            }
-                           <div onClick={() => router("/feedback")} className="me-3" style={{ color: props.theme ? props.theme.primary_theme_color : 'white', fontWeight: 'bold', cursor: 'pointer' }}>Feedback</div>
-                           <div onClick={() => router("/contact")} className="me-3" style={{ color: props.theme ? props.theme.primary_theme_color : 'white', fontWeight: 'bold', cursor: 'pointer' }}>Contact</div>
+                           {/* <div onClick={() => router("/feedback")} className="me-3" style={{ color: props.theme ? props.theme.primary_theme_color : 'white', fontWeight: 'bold', cursor: 'pointer' }}>Feedback</div> */}
+                           <div onClick={() => router("/")} className="me-3" style={{ color: props.theme ? props.theme.primary_theme_color : 'white', fontWeight: 'bold', cursor: 'pointer' }}>Magic Link</div>
                            {/* {
                               businessData.isAuthenticated ?
                                  <div onClick={() => router("/profile")} className="me-3" style={{ color: props.theme ? props.theme.secondary_text_color : 'white', fontWeight: 'bold', cursor: 'pointer' }}>Profile</div> :
@@ -56,18 +56,18 @@ const Header = (props) => {
                            } */}
                         </div>
                      </div>
-                     <div className='d-block d-lg-none'>
+                     {/* <div className='d-block d-lg-none'>
                         <Stack sx={{ zIndex: '1000' }} direction="row">
                            <a target='_blank' href={`https://api.whatsapp.com/send/?phone=${props?.business?.phone}&text=hello`}>
                               <IconButton sx={{ color: "green", zIndex: '1000' }}>
                                  <WhatsApp color="green" />
                               </IconButton>
                            </a>
-                           {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                               <span className="navbar-toggler-icon"></span>
-                           </button> */}
+                           </button>
                         </Stack>
-                     </div>
+                     </div> */}
                   </div>
                </nav>
             </div>

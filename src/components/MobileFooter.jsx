@@ -22,26 +22,26 @@ const MobileFooter = (props) => {
                   <IconButton color={props.theme.secondary_text_color ? "inherit" : "black"}>
                      <RestaurantMenuOutlined />
                      <Typography sx={{ fontFamily: 'Poppins', fontSize: '14px' }} variant="h6" ml={1}>
-                        E-Menu
+                        Digital Menu
                      </Typography>
                   </IconButton>
                </Stack> : null}
-               <Stack sx={{ textDecoration: 'none', color: props.theme ? props.theme.secondary_text_color : 'white' }} component={Link} to="/feedback" display="flex" flexDirection="column">
+               <Stack sx={{ textDecoration: 'none', color: props.theme ? props.theme.secondary_text_color : 'white' }} component={Link} to="/" display="flex" flexDirection="column">
                   <IconButton color={props.theme.secondary_text_color ? "inherit" : "black"}>
                      <ThumbUpAlt />
                      <Typography sx={{ fontFamily: 'Poppins', fontSize: '14px' }} variant="h6" ml={1}>
-                        Feedback
+                        Magic Link
                      </Typography>
                   </IconButton>
                </Stack>
-               <Stack sx={{ textDecoration: 'none', color: props.theme ? props.theme.secondary_text_color : 'white' }} component={Link} to="/contact" display="flex" flexDirection="column">
+               {/* <Stack sx={{ textDecoration: 'none', color: props.theme ? props.theme.secondary_text_color : 'white' }} component={Link} to="/contact" display="flex" flexDirection="column">
                   <IconButton color={props.theme.secondary_text_color ? "inherit" : "black"}>
                      <Call />
                      <Typography sx={{ fontFamily: 'Poppins', fontSize: '14px' }} variant="h6" ml={1}>
                         Contact
                      </Typography>
                   </IconButton>
-               </Stack>
+               </Stack> */}
             </Toolbar>
          </AppBar>
       </div>

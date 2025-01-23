@@ -30,6 +30,7 @@ const FeedBackAPI = async ({ ratings, name, phone, description, email, questions
             name,
             mobile_number: phone,
             email,
+            business_url: window.location.hostname,
             ...(Object.keys(feedback).length > 0 && feedback) // Spread the feedback object to include the questions and answers
          })
       });

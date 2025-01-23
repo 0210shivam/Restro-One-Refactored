@@ -4,7 +4,7 @@ import { Suspense, lazy } from "react";
 import "./BusinessContextProvider.css"; // Custom CSS for transitions
 import getAuthKey from "../global/authKey/GetAuthKey";
 
-const FirstLoader = lazy(() => import("../components/FirstLoader"));
+const InitialLoader = lazy(() => import("../components/InitialLoader"));
 
 export const BusinessContext = createContext();
 
@@ -63,7 +63,7 @@ export const BusinessContextProvider = ({ children }) => {
       return (
          <Suspense fallback={<div>Loading...</div>}>
             <div className={`fade-transition ${isTransitioning ? "fade-out" : "fade-in"}`}>
-               <FirstLoader />
+               <InitialLoader />
             </div>
          </Suspense>
       );

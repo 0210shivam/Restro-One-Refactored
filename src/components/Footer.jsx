@@ -1,6 +1,8 @@
 import React from 'react';
 
 const Footer = (props) => {
+   const business = props?.business[0];
+
    return (
       <>
          <div className='footer_container'>
@@ -11,11 +13,11 @@ const Footer = (props) => {
                         <div className="row mt-3">
                            <div className="col-md-5 col-lg-5 col-xl-3 mr-auto mb-4">
                               <h6 className="text-uppercase fw-bold mb-4">
-                                 {props?.business?.name}
+                                 {business?.name}
                               </h6>
                               <p>
                                  <i className="fas fa-home me-3 mt-1" />
-                                 {props?.business?.address}
+                                 {business?.address}
                                  <br />
                               </p>
                            </div>
@@ -23,10 +25,10 @@ const Footer = (props) => {
                               <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
                               <p className='text-wrap' style={{ wordBreak: 'break-all' }}>
                                  <i className="fas fa-envelope me-3" />
-                                 {props?.business?.email}
+                                 {business?.email}
                               </p>
                               <p>
-                                 <i className="fas fa-phone me-3" /> {props?.business?.phone}
+                                 <i className="fas fa-phone me-3" /> {business?.phone}
                               </p>
                            </div>
                         </div>

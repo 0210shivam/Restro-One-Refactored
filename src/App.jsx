@@ -33,17 +33,14 @@ function App() {
   const itemsPerPage = 14;
 
   useEffect(() => {
-    console.log("Business", business);
-    console.log("settings", settings);
-  }, []);
-
-  useEffect(() => {
-    if (!businessData.isEMenu) {
-      router("/contact");
+    // console.log("Business Data: ", businessData);
+    
+    if (businessData?.isEMenu && settings?.store_status === "1") {
+      router("/e-menu");
     } else {
-      router("/")
+      router('/')
     }
-  }, [businessData.isEMenu]);
+  }, [businessData]);
 
 
   const closeOffcanvasModal = () => {
@@ -141,7 +138,7 @@ function App() {
                   )) : null
             }
           </div>
-          <IconButton onClick={handleNext} disabled={startIndex + itemsPerPage >= categories.length}>
+          <IconButton onClick={handleNext} disabled={startIndex + itemsPerPage >= categories?.length}>
             <ArrowForwardIos />
           </IconButton>
         </div>
